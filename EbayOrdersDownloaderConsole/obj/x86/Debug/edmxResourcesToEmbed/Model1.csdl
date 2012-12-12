@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrderManagerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="OrderManagerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DetailRecord" EntityType="OrderManagerModel.DetailRecord" />
+    <EntitySet Name="HeaderRecords" EntityType="OrderManagerModel.HeaderRecords" />
+    <EntitySet Name="OrderMessage" EntityType="OrderManagerModel.OrderMessage" />
+    <EntitySet Name="OrderStatus" EntityType="OrderManagerModel.OrderStatus" />
+    <EntitySet Name="sysdiagrams" EntityType="OrderManagerModel.sysdiagrams" />
+  </EntityContainer>
+  <EntityType Name="DetailRecord">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+      <PropertyRef Name="PurchaseID" />
+    </Key>
+    <Property Name="InvoiceID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PurchaseID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="VolumeID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="VolumeName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="SourceCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ProductSKUCode" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="UnitPrice" Type="Double" />
+    <Property Name="ExtendedPrice" Type="Double" />
+    <Property Name="CouponCodes" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="I_StatusCode" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="I_ShipDate" Type="DateTime" />
+    <Property Name="I_Tracking" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="I_ShippingMethod" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="I_SyncWithShop" Type="Int32" />
+    <Property Name="I_OriginalCost" Type="Double" />
+    <Property Name="I_OriginalQTY" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Commision" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="HeaderRecords">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="OrderID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="InvoiceID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="OrderDate" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="ShopperID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoCompanyName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoStreetAddress" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoOptionalAddress" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoCity" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoZip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoCountry" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoRegion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="BilltoPhone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DeliveryMethod" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ProductSubtotal" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+    <Property Name="ShippingAndHandling" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+    <Property Name="TaxMultiplier" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Tax" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+    <Property Name="Discount" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+    <Property Name="OverallTotal" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+    <Property Name="CreditCardType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreditCardNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreditCardExpiration" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CreditCardSecurityNumberCCV" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="NameOnCreditCard" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoCompanyName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoStreetAddress" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoOptionalAddress" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoCity" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoZip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoCountry" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoRegion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ShiptoPhone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="SHOPCOMCatalogID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CatalogName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="MultiplePaymentsQuantity" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CanSellNamePrivacyFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="CanSendOffersPrivacyFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+    <Property Name="ShopperComments" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Source" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="PayPalTxnID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="GiftMessage" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Commision" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="OrderMessage">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="To" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="From" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Message" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="DeliveryDate" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Tracking" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="ShipMethod" Type="Int32" />
+    <Property Name="ShipDate" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Synced" Type="Int32" />
+    <Property Name="ProcessedBy" Type="Int32" />
+    <Property Name="PONum" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="Vendor" Type="Int32" />
+    <Property Name="InvoiceNum" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+</Schema>

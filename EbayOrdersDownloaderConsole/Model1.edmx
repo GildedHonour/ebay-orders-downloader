@@ -1,0 +1,431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OrderManagerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="OrderManagerModelStoreContainer">
+          <EntitySet Name="DetailRecord" EntityType="OrderManagerModel.Store.DetailRecord" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HeaderRecords" EntityType="OrderManagerModel.Store.HeaderRecords" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderMessage" EntityType="OrderManagerModel.Store.OrderMessage" store:Type="Tables" store:Schema="dbo" store:Name="OrderMessage">
+            <DefiningQuery>SELECT 
+      [OrderMessage].[InvoiceID] AS [InvoiceID], 
+      [OrderMessage].[To] AS [To], 
+      [OrderMessage].[From] AS [From], 
+      [OrderMessage].[Message] AS [Message], 
+      [OrderMessage].[DeliveryDate] AS [DeliveryDate]
+      FROM [dbo].[OrderMessage] AS [OrderMessage]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OrderStatus" EntityType="OrderManagerModel.Store.OrderStatus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="OrderManagerModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="DetailRecord">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="InvoiceID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="PurchaseID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="VolumeID" Type="varchar" MaxLength="50" />
+          <Property Name="VolumeName" Type="varchar" MaxLength="255" />
+          <Property Name="SourceCode" Type="varchar" MaxLength="50" />
+          <Property Name="ProductSKUCode" Type="varchar" MaxLength="100" />
+          <Property Name="ProductDescription" Type="varchar" MaxLength="255" />
+          <Property Name="Quantity" Type="numeric" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="ExtendedPrice" Type="float" />
+          <Property Name="CouponCodes" Type="varchar" MaxLength="50" />
+          <Property Name="I_StatusCode" Type="numeric" />
+          <Property Name="I_ShipDate" Type="datetime" />
+          <Property Name="I_Tracking" Type="varchar" MaxLength="35" />
+          <Property Name="I_ShippingMethod" Type="numeric" />
+          <Property Name="I_SyncWithShop" Type="int" />
+          <Property Name="I_OriginalCost" Type="float" />
+          <Property Name="I_OriginalQTY" Type="numeric" />
+          <Property Name="Commision" Type="numeric" Scale="2" />
+        </EntityType>
+        <EntityType Name="HeaderRecords">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="OrderID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="InvoiceID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OrderDate" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="ShopperID" Type="varchar" MaxLength="50" />
+          <Property Name="BilltoFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="BilltoLastName" Type="varchar" MaxLength="50" />
+          <Property Name="BilltoCompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="BilltoStreetAddress" Type="varchar" MaxLength="250" />
+          <Property Name="BilltoOptionalAddress" Type="varchar" MaxLength="250" />
+          <Property Name="BilltoCity" Type="varchar" MaxLength="50" />
+          <Property Name="BilltoState" Type="varchar" MaxLength="50" />
+          <Property Name="BilltoZip" Type="varchar" MaxLength="50" />
+          <Property Name="BilltoCountry" Type="varchar" MaxLength="50" />
+          <Property Name="BilltoRegion" Type="varchar" MaxLength="50" />
+          <Property Name="BilltoPhone" Type="varchar" MaxLength="50" />
+          <Property Name="DeliveryMethod" Type="varchar" MaxLength="50" />
+          <Property Name="ProductSubtotal" Type="varchar" MaxLength="53" />
+          <Property Name="ShippingAndHandling" Type="varchar" MaxLength="53" />
+          <Property Name="TaxMultiplier" Type="varchar" MaxLength="50" />
+          <Property Name="Tax" Type="varchar" MaxLength="53" />
+          <Property Name="Discount" Type="varchar" MaxLength="53" />
+          <Property Name="OverallTotal" Type="varchar" MaxLength="53" />
+          <Property Name="CreditCardType" Type="varchar" MaxLength="50" />
+          <Property Name="CreditCardNumber" Type="varchar" MaxLength="50" />
+          <Property Name="CreditCardExpiration" Type="varchar" MaxLength="50" />
+          <Property Name="CreditCardSecurityNumberCCV" Type="varchar" MaxLength="50" />
+          <Property Name="NameOnCreditCard" Type="varchar" MaxLength="50" />
+          <Property Name="ShiptoFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="ShiptoLastName" Type="varchar" MaxLength="50" />
+          <Property Name="ShiptoCompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="ShiptoStreetAddress" Type="varchar" MaxLength="250" />
+          <Property Name="ShiptoOptionalAddress" Type="varchar" MaxLength="250" />
+          <Property Name="ShiptoCity" Type="varchar" MaxLength="50" />
+          <Property Name="ShiptoState" Type="varchar" MaxLength="50" />
+          <Property Name="ShiptoZip" Type="varchar" MaxLength="50" />
+          <Property Name="ShiptoCountry" Type="varchar" MaxLength="50" />
+          <Property Name="ShiptoRegion" Type="varchar" MaxLength="50" />
+          <Property Name="ShiptoPhone" Type="varchar" MaxLength="50" />
+          <Property Name="SHOPCOMCatalogID" Type="varchar" MaxLength="50" />
+          <Property Name="CatalogName" Type="varchar" MaxLength="50" />
+          <Property Name="MultiplePaymentsQuantity" Type="varchar" MaxLength="50" />
+          <Property Name="CanSellNamePrivacyFlag" Type="char" MaxLength="1" />
+          <Property Name="CanSendOffersPrivacyFlag" Type="char" MaxLength="1" />
+          <Property Name="ShopperComments" Type="varchar(max)" />
+          <Property Name="Source" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="PayPalTxnID" Type="varchar" MaxLength="50" />
+          <Property Name="GiftMessage" Type="varchar(max)" />
+          <Property Name="Commision" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'OrderManager.dbo.OrderMessage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OrderMessage">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="To" Type="varchar" MaxLength="50" />
+          <Property Name="From" Type="varchar" MaxLength="50" />
+          <Property Name="Message" Type="varchar" MaxLength="50" />
+          <Property Name="DeliveryDate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="Tracking" Type="varchar" MaxLength="35" />
+          <Property Name="ShipMethod" Type="int" />
+          <Property Name="ShipDate" Type="varchar" MaxLength="50" />
+          <Property Name="Synced" Type="int" />
+          <Property Name="ProcessedBy" Type="int" />
+          <Property Name="PONum" Type="varchar" MaxLength="25" />
+          <Property Name="Vendor" Type="int" />
+          <Property Name="InvoiceNum" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6013: The table/view 'OrderManager.dbo.Status' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="Status">
+        <Property Name="StatusID" Type="numeric" />
+        <Property Name="StatusName" Type="varchar" MaxLength="50" />
+      </EntityType>-->
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OrderManagerModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="OrderManagerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DetailRecord" EntityType="OrderManagerModel.DetailRecord" />
+          <EntitySet Name="HeaderRecords" EntityType="OrderManagerModel.HeaderRecords" />
+          <EntitySet Name="OrderMessage" EntityType="OrderManagerModel.OrderMessage" />
+          <EntitySet Name="OrderStatus" EntityType="OrderManagerModel.OrderStatus" />
+          <EntitySet Name="sysdiagrams" EntityType="OrderManagerModel.sysdiagrams" />
+        </EntityContainer>
+        <EntityType Name="DetailRecord">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+            <PropertyRef Name="PurchaseID" />
+          </Key>
+          <Property Name="InvoiceID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PurchaseID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VolumeID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="VolumeName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SourceCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ProductSKUCode" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="ExtendedPrice" Type="Double" />
+          <Property Name="CouponCodes" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="I_StatusCode" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="I_ShipDate" Type="DateTime" />
+          <Property Name="I_Tracking" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="I_ShippingMethod" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="I_SyncWithShop" Type="Int32" />
+          <Property Name="I_OriginalCost" Type="Double" />
+          <Property Name="I_OriginalQTY" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Commision" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="HeaderRecords">
+          <Key>
+            <PropertyRef Name="OrderID" />
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="OrderID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="InvoiceID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OrderDate" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="ShopperID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoCompanyName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoStreetAddress" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoOptionalAddress" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoCity" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoZip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoCountry" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoRegion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BilltoPhone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DeliveryMethod" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ProductSubtotal" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+          <Property Name="ShippingAndHandling" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+          <Property Name="TaxMultiplier" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Tax" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+          <Property Name="Discount" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+          <Property Name="OverallTotal" Type="String" MaxLength="53" Unicode="false" FixedLength="false" />
+          <Property Name="CreditCardType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreditCardNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreditCardExpiration" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CreditCardSecurityNumberCCV" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NameOnCreditCard" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoFirstName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoLastName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoCompanyName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoStreetAddress" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoOptionalAddress" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoCity" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoState" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoZip" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoCountry" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoRegion" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ShiptoPhone" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SHOPCOMCatalogID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CatalogName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MultiplePaymentsQuantity" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CanSellNamePrivacyFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="CanSendOffersPrivacyFlag" Type="String" MaxLength="1" Unicode="false" FixedLength="true" />
+          <Property Name="ShopperComments" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Source" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="PayPalTxnID" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GiftMessage" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Commision" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="OrderMessage">
+          <Key>
+            <PropertyRef Name="InvoiceID" />
+          </Key>
+          <Property Name="InvoiceID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="To" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="From" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Message" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="DeliveryDate" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="OrderStatus">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Tracking" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="ShipMethod" Type="Int32" />
+          <Property Name="ShipDate" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Synced" Type="Int32" />
+          <Property Name="ProcessedBy" Type="Int32" />
+          <Property Name="PONum" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="Vendor" Type="Int32" />
+          <Property Name="InvoiceNum" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OrderManagerModelStoreContainer" CdmEntityContainer="OrderManagerEntities">
+          <EntitySetMapping Name="DetailRecord">
+            <EntityTypeMapping TypeName="OrderManagerModel.DetailRecord">
+              <MappingFragment StoreEntitySet="DetailRecord">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="PurchaseID" ColumnName="PurchaseID" />
+                <ScalarProperty Name="VolumeID" ColumnName="VolumeID" />
+                <ScalarProperty Name="VolumeName" ColumnName="VolumeName" />
+                <ScalarProperty Name="SourceCode" ColumnName="SourceCode" />
+                <ScalarProperty Name="ProductSKUCode" ColumnName="ProductSKUCode" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ExtendedPrice" ColumnName="ExtendedPrice" />
+                <ScalarProperty Name="CouponCodes" ColumnName="CouponCodes" />
+                <ScalarProperty Name="I_StatusCode" ColumnName="I_StatusCode" />
+                <ScalarProperty Name="I_ShipDate" ColumnName="I_ShipDate" />
+                <ScalarProperty Name="I_Tracking" ColumnName="I_Tracking" />
+                <ScalarProperty Name="I_ShippingMethod" ColumnName="I_ShippingMethod" />
+                <ScalarProperty Name="I_SyncWithShop" ColumnName="I_SyncWithShop" />
+                <ScalarProperty Name="I_OriginalCost" ColumnName="I_OriginalCost" />
+                <ScalarProperty Name="I_OriginalQTY" ColumnName="I_OriginalQTY" />
+                <ScalarProperty Name="Commision" ColumnName="Commision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HeaderRecords">
+            <EntityTypeMapping TypeName="OrderManagerModel.HeaderRecords">
+              <MappingFragment StoreEntitySet="HeaderRecords">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ShopperID" ColumnName="ShopperID" />
+                <ScalarProperty Name="BilltoFirstName" ColumnName="BilltoFirstName" />
+                <ScalarProperty Name="BilltoLastName" ColumnName="BilltoLastName" />
+                <ScalarProperty Name="BilltoCompanyName" ColumnName="BilltoCompanyName" />
+                <ScalarProperty Name="BilltoStreetAddress" ColumnName="BilltoStreetAddress" />
+                <ScalarProperty Name="BilltoOptionalAddress" ColumnName="BilltoOptionalAddress" />
+                <ScalarProperty Name="BilltoCity" ColumnName="BilltoCity" />
+                <ScalarProperty Name="BilltoState" ColumnName="BilltoState" />
+                <ScalarProperty Name="BilltoZip" ColumnName="BilltoZip" />
+                <ScalarProperty Name="BilltoCountry" ColumnName="BilltoCountry" />
+                <ScalarProperty Name="BilltoRegion" ColumnName="BilltoRegion" />
+                <ScalarProperty Name="BilltoPhone" ColumnName="BilltoPhone" />
+                <ScalarProperty Name="DeliveryMethod" ColumnName="DeliveryMethod" />
+                <ScalarProperty Name="ProductSubtotal" ColumnName="ProductSubtotal" />
+                <ScalarProperty Name="ShippingAndHandling" ColumnName="ShippingAndHandling" />
+                <ScalarProperty Name="TaxMultiplier" ColumnName="TaxMultiplier" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="OverallTotal" ColumnName="OverallTotal" />
+                <ScalarProperty Name="CreditCardType" ColumnName="CreditCardType" />
+                <ScalarProperty Name="CreditCardNumber" ColumnName="CreditCardNumber" />
+                <ScalarProperty Name="CreditCardExpiration" ColumnName="CreditCardExpiration" />
+                <ScalarProperty Name="CreditCardSecurityNumberCCV" ColumnName="CreditCardSecurityNumberCCV" />
+                <ScalarProperty Name="NameOnCreditCard" ColumnName="NameOnCreditCard" />
+                <ScalarProperty Name="ShiptoFirstName" ColumnName="ShiptoFirstName" />
+                <ScalarProperty Name="ShiptoLastName" ColumnName="ShiptoLastName" />
+                <ScalarProperty Name="ShiptoCompanyName" ColumnName="ShiptoCompanyName" />
+                <ScalarProperty Name="ShiptoStreetAddress" ColumnName="ShiptoStreetAddress" />
+                <ScalarProperty Name="ShiptoOptionalAddress" ColumnName="ShiptoOptionalAddress" />
+                <ScalarProperty Name="ShiptoCity" ColumnName="ShiptoCity" />
+                <ScalarProperty Name="ShiptoState" ColumnName="ShiptoState" />
+                <ScalarProperty Name="ShiptoZip" ColumnName="ShiptoZip" />
+                <ScalarProperty Name="ShiptoCountry" ColumnName="ShiptoCountry" />
+                <ScalarProperty Name="ShiptoRegion" ColumnName="ShiptoRegion" />
+                <ScalarProperty Name="ShiptoPhone" ColumnName="ShiptoPhone" />
+                <ScalarProperty Name="SHOPCOMCatalogID" ColumnName="SHOPCOMCatalogID" />
+                <ScalarProperty Name="CatalogName" ColumnName="CatalogName" />
+                <ScalarProperty Name="MultiplePaymentsQuantity" ColumnName="MultiplePaymentsQuantity" />
+                <ScalarProperty Name="CanSellNamePrivacyFlag" ColumnName="CanSellNamePrivacyFlag" />
+                <ScalarProperty Name="CanSendOffersPrivacyFlag" ColumnName="CanSendOffersPrivacyFlag" />
+                <ScalarProperty Name="ShopperComments" ColumnName="ShopperComments" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="PayPalTxnID" ColumnName="PayPalTxnID" />
+                <ScalarProperty Name="GiftMessage" ColumnName="GiftMessage" />
+                <ScalarProperty Name="Commision" ColumnName="Commision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderMessage">
+            <EntityTypeMapping TypeName="OrderManagerModel.OrderMessage">
+              <MappingFragment StoreEntitySet="OrderMessage">
+                <ScalarProperty Name="InvoiceID" ColumnName="InvoiceID" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderStatus">
+            <EntityTypeMapping TypeName="OrderManagerModel.OrderStatus">
+              <MappingFragment StoreEntitySet="OrderStatus">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Tracking" ColumnName="Tracking" />
+                <ScalarProperty Name="ShipMethod" ColumnName="ShipMethod" />
+                <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+                <ScalarProperty Name="Synced" ColumnName="Synced" />
+                <ScalarProperty Name="ProcessedBy" ColumnName="ProcessedBy" />
+                <ScalarProperty Name="PONum" ColumnName="PONum" />
+                <ScalarProperty Name="Vendor" ColumnName="Vendor" />
+                <ScalarProperty Name="InvoiceNum" ColumnName="InvoiceNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="OrderManagerModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="OrderManagerModel.DetailRecord" Width="1.5" PointX="0.75" PointY="0.75" Height="4.6725065104166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrderManagerModel.HeaderRecords" Width="1.5" PointX="2.75" PointY="0.75" Height="10.441549479166666" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrderManagerModel.OrderMessage" Width="1.5" PointX="4.75" PointY="0.75" Height="1.9802864583333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrderManagerModel.OrderStatus" Width="1.5" PointX="4.75" PointY="3.75" Height="3.1340950520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="OrderManagerModel.sysdiagrams" Width="1.5" PointX="6.75" PointY="0.75" Height="1.9802864583333317" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

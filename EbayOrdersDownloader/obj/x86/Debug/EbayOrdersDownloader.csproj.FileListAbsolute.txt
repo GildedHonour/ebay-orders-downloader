@@ -1,0 +1,5 @@
+C:\Users\Alex\documents\visual studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloader.exe
+C:\Users\Alex\documents\visual studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloader.pdb
+C:\Users\Alex\documents\visual studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\obj\x86\Debug\EbayOrdersDownloader.exe
+C:\Users\Alex\documents\visual studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\obj\x86\Debug\EbayOrdersDownloader.pdb
+C:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\obj\x86\Debug\EbayOrdersDownloader.csprojResolveAssemblyReference.cache

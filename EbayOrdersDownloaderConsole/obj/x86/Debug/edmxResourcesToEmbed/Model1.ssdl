@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrderManagerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="OrderManagerModelStoreContainer">
+    <EntitySet Name="DetailRecord" EntityType="OrderManagerModel.Store.DetailRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HeaderRecords" EntityType="OrderManagerModel.Store.HeaderRecords" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderMessage" EntityType="OrderManagerModel.Store.OrderMessage" store:Type="Tables" store:Schema="dbo" store:Name="OrderMessage">
+      <DefiningQuery>SELECT 
+      [OrderMessage].[InvoiceID] AS [InvoiceID], 
+      [OrderMessage].[To] AS [To], 
+      [OrderMessage].[From] AS [From], 
+      [OrderMessage].[Message] AS [Message], 
+      [OrderMessage].[DeliveryDate] AS [DeliveryDate]
+      FROM [dbo].[OrderMessage] AS [OrderMessage]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OrderStatus" EntityType="OrderManagerModel.Store.OrderStatus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="OrderManagerModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="DetailRecord">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+      <PropertyRef Name="PurchaseID" />
+    </Key>
+    <Property Name="InvoiceID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="PurchaseID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="VolumeID" Type="varchar" MaxLength="50" />
+    <Property Name="VolumeName" Type="varchar" MaxLength="255" />
+    <Property Name="SourceCode" Type="varchar" MaxLength="50" />
+    <Property Name="ProductSKUCode" Type="varchar" MaxLength="100" />
+    <Property Name="ProductDescription" Type="varchar" MaxLength="255" />
+    <Property Name="Quantity" Type="numeric" />
+    <Property Name="UnitPrice" Type="float" />
+    <Property Name="ExtendedPrice" Type="float" />
+    <Property Name="CouponCodes" Type="varchar" MaxLength="50" />
+    <Property Name="I_StatusCode" Type="numeric" />
+    <Property Name="I_ShipDate" Type="datetime" />
+    <Property Name="I_Tracking" Type="varchar" MaxLength="35" />
+    <Property Name="I_ShippingMethod" Type="numeric" />
+    <Property Name="I_SyncWithShop" Type="int" />
+    <Property Name="I_OriginalCost" Type="float" />
+    <Property Name="I_OriginalQTY" Type="numeric" />
+    <Property Name="Commision" Type="numeric" Scale="2" />
+  </EntityType>
+  <EntityType Name="HeaderRecords">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="OrderID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="InvoiceID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="OrderDate" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="150" />
+    <Property Name="ShopperID" Type="varchar" MaxLength="50" />
+    <Property Name="BilltoFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="BilltoLastName" Type="varchar" MaxLength="50" />
+    <Property Name="BilltoCompanyName" Type="varchar" MaxLength="50" />
+    <Property Name="BilltoStreetAddress" Type="varchar" MaxLength="250" />
+    <Property Name="BilltoOptionalAddress" Type="varchar" MaxLength="250" />
+    <Property Name="BilltoCity" Type="varchar" MaxLength="50" />
+    <Property Name="BilltoState" Type="varchar" MaxLength="50" />
+    <Property Name="BilltoZip" Type="varchar" MaxLength="50" />
+    <Property Name="BilltoCountry" Type="varchar" MaxLength="50" />
+    <Property Name="BilltoRegion" Type="varchar" MaxLength="50" />
+    <Property Name="BilltoPhone" Type="varchar" MaxLength="50" />
+    <Property Name="DeliveryMethod" Type="varchar" MaxLength="50" />
+    <Property Name="ProductSubtotal" Type="varchar" MaxLength="53" />
+    <Property Name="ShippingAndHandling" Type="varchar" MaxLength="53" />
+    <Property Name="TaxMultiplier" Type="varchar" MaxLength="50" />
+    <Property Name="Tax" Type="varchar" MaxLength="53" />
+    <Property Name="Discount" Type="varchar" MaxLength="53" />
+    <Property Name="OverallTotal" Type="varchar" MaxLength="53" />
+    <Property Name="CreditCardType" Type="varchar" MaxLength="50" />
+    <Property Name="CreditCardNumber" Type="varchar" MaxLength="50" />
+    <Property Name="CreditCardExpiration" Type="varchar" MaxLength="50" />
+    <Property Name="CreditCardSecurityNumberCCV" Type="varchar" MaxLength="50" />
+    <Property Name="NameOnCreditCard" Type="varchar" MaxLength="50" />
+    <Property Name="ShiptoFirstName" Type="varchar" MaxLength="50" />
+    <Property Name="ShiptoLastName" Type="varchar" MaxLength="50" />
+    <Property Name="ShiptoCompanyName" Type="varchar" MaxLength="50" />
+    <Property Name="ShiptoStreetAddress" Type="varchar" MaxLength="250" />
+    <Property Name="ShiptoOptionalAddress" Type="varchar" MaxLength="250" />
+    <Property Name="ShiptoCity" Type="varchar" MaxLength="50" />
+    <Property Name="ShiptoState" Type="varchar" MaxLength="50" />
+    <Property Name="ShiptoZip" Type="varchar" MaxLength="50" />
+    <Property Name="ShiptoCountry" Type="varchar" MaxLength="50" />
+    <Property Name="ShiptoRegion" Type="varchar" MaxLength="50" />
+    <Property Name="ShiptoPhone" Type="varchar" MaxLength="50" />
+    <Property Name="SHOPCOMCatalogID" Type="varchar" MaxLength="50" />
+    <Property Name="CatalogName" Type="varchar" MaxLength="50" />
+    <Property Name="MultiplePaymentsQuantity" Type="varchar" MaxLength="50" />
+    <Property Name="CanSellNamePrivacyFlag" Type="char" MaxLength="1" />
+    <Property Name="CanSendOffersPrivacyFlag" Type="char" MaxLength="1" />
+    <Property Name="ShopperComments" Type="varchar(max)" />
+    <Property Name="Source" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="PayPalTxnID" Type="varchar" MaxLength="50" />
+    <Property Name="GiftMessage" Type="varchar(max)" />
+    <Property Name="Commision" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'OrderManager.dbo.OrderMessage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="OrderMessage">
+    <Key>
+      <PropertyRef Name="InvoiceID" />
+    </Key>
+    <Property Name="InvoiceID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="To" Type="varchar" MaxLength="50" />
+    <Property Name="From" Type="varchar" MaxLength="50" />
+    <Property Name="Message" Type="varchar" MaxLength="50" />
+    <Property Name="DeliveryDate" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrderStatus">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Notes" Type="ntext" />
+    <Property Name="Tracking" Type="varchar" MaxLength="35" />
+    <Property Name="ShipMethod" Type="int" />
+    <Property Name="ShipDate" Type="varchar" MaxLength="50" />
+    <Property Name="Synced" Type="int" />
+    <Property Name="ProcessedBy" Type="int" />
+    <Property Name="PONum" Type="varchar" MaxLength="25" />
+    <Property Name="Vendor" Type="int" />
+    <Property Name="InvoiceNum" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'OrderManager.dbo.Status' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="Status">
+        <Property Name="StatusID" Type="numeric" />
+        <Property Name="StatusName" Type="varchar" MaxLength="50" />
+      </EntityType>-->
+</Schema>
