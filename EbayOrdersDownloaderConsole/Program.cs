@@ -101,42 +101,42 @@ namespace EbayOrdersDownloaderConsole
                         };
                         #endregion
 
-                        //if there is more than item in the order
                         List<DAL.DetailRecord> detailRecordList = new List<DAL.DetailRecord>();
-                        using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings[""].ConnectionString))
+                        foreach (TransactionType transactionItem in order.TransactionArray)
                         {
-                            SqlCommand cmd = new SqlCommand("", connection);
-                            connection.Open();
-                            foreach (TransactionType transactionItem in order.TransactionArray)
+                            var dr = new DAL.DetailRecord
                             {
-                                var detailRecord = new DAL.DetailRecord
-                                {
-                                    InvoiceID = order.OrderID,
-                                    PurchaseID = transactionItem.ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
-                                    VolumeID = null,
-                                    VolumeName = null,
-                                    SourceCode = transactionItem.Item.Site.ToString(),
-                                    ProductSKUCode = cmd.ExecuteScalar().ToString(),
-                                    ProductDescription = transactionItem.Item.Title,
-                                    Quantity = transactionItem.QuantityPurchased,
-                                    UnitPrice = transactionItem.TransactionPrice.Value,
-                                    ExtendedPrice = transactionItem.TransactionPrice.Value * transactionItem.QuantityPurchased,
-                                    CouponCodes = "",//?
-                                    I_StatusCode = 0,//?
-                                    I_ShipDate = null,//?
-                                    I_Tracking = "",//?
-                                    I_ShippingMethod = null,//?
-                                    I_SyncWithShop = null,//?
-                                    I_OriginalCost = null,//?
-                                    I_OriginalQTY = null,//?
-                                    Commision = null//?
-                                };
-                                detailRecordList.Add(detailRecord);
-                            }
+                                InvoiceID = order.OrderID,
+                                PurchaseID = transactionItem.ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
+                                VolumeID = null,
+                                VolumeName = null,
+                                SourceCode = transactionItem.Item.Site.ToString(),
+                                //ProductSKUCode = cmd.ExecuteScalar().ToString(),
+                                ProductDescription = transactionItem.Item.Title,
+                                Quantity = transactionItem.QuantityPurchased,
+                                UnitPrice = transactionItem.TransactionPrice.Value,
+                                ExtendedPrice = transactionItem.TransactionPrice.Value * transactionItem.QuantityPurchased,
+                                CouponCodes = "",//?
+                                I_StatusCode = 0,//?
+                                I_ShipDate = null,//?
+                                I_Tracking = "",//?
+                                I_ShippingMethod = null,//?
+                                I_SyncWithShop = null,//?
+                                I_OriginalCost = null,//?
+                                I_OriginalQTY = null,//?
+                                Commision = null//?
+                            };
+
+                            detailRecordList.Add(dr);
                         }
 
                         DAL.HeaderRecords.Add(headerRecord);
-                        DAL.DetailRecord.Add(detailRecordList);
+                        List<string> skuList = DAL.ListingsHelper.GetMPN(detailRecordList.Select(x => x.PurchaseID));
+                        for (int i = 0; i < detailRecordList.Count; i++)
+                        {
+                            detailRecordList[i].ProductSKUCode = skuList[i];
+                            DAL.DetailRecord.Add(detailRecordList);
+                        }
 
                         var orderStatus = new DAL.OrderStatus
                         {
@@ -144,7 +144,7 @@ namespace EbayOrdersDownloaderConsole
                             Status = 1
                         };
                         DAL.OrderStatus.Add(orderStatus);
-                        
+
                         var orderMessage = new DAL.OrderMessage
                         {
                             InvoiceID = order.OrderID,

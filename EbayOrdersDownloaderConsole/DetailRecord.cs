@@ -28,7 +28,7 @@ namespace EbayOrdersDownloaderConsole.DAL
         public decimal? I_OriginalQTY;
         public decimal? Commision;
 
-        public static void Add(List<DetailRecord> detailRecordList)
+        public static void Add(IEnumerable<DetailRecord> detailRecordList)
         {
             var command = BuildCommand("[dbo].[PrDetailRecord_Add]");
             CommandExecute(command, cmd =>
@@ -37,25 +37,25 @@ namespace EbayOrdersDownloaderConsole.DAL
                 {
                     cmd.Parameters.Clear();
                     FillCommand((SqlCommand)cmd
-                                    , CreateParameter("InvoiceID", detailRecord.InvoiceID, false)
-                                    , CreateParameter("PurchaseID", detailRecord.PurchaseID, false)
-                                    , CreateParameter("VolumeID", detailRecord.VolumeID, false)
-                                    , CreateParameter("VolumeName", detailRecord.VolumeName, false)
-                                    , CreateParameter("SourceCode", detailRecord.SourceCode, false)
-                                    , CreateParameter("ProductSKUCode", detailRecord.ProductSKUCode, false)
-                                    , CreateParameter("ProductDescription", detailRecord.ProductDescription, false)
-                                    , CreateParameter("Quantity", detailRecord.Quantity, false)
-                                    , CreateParameter("UnitPrice", detailRecord.UnitPrice, false)
-                                    , CreateParameter("ExtendedPrice", detailRecord.ExtendedPrice, false)
-                                    , CreateParameter("CouponCodes", detailRecord.CouponCodes, false)
-                                    , CreateParameter("I_StatusCode", detailRecord.I_StatusCode, false)
-                                    , CreateParameter("I_ShipDate", detailRecord.I_ShipDate, false)
-                                    , CreateParameter("I_Tracking", detailRecord.I_Tracking, false)
-                                    , CreateParameter("I_ShippingMethod", detailRecord.I_ShippingMethod, false)
-                                    , CreateParameter("I_SyncWithShop", detailRecord.I_SyncWithShop, false)
-                                    , CreateParameter("I_OriginalCost", detailRecord.I_OriginalCost, false)
-                                    , CreateParameter("I_OriginalQTY", detailRecord.I_OriginalQTY, false)
-                                    , CreateParameter("Commision", detailRecord.Commision, false)
+                                    , CreateParameter("InvoiceID", detailRecord.InvoiceID)
+                                    , CreateParameter("PurchaseID", detailRecord.PurchaseID)
+                                    , CreateParameter("VolumeID", detailRecord.VolumeID)
+                                    , CreateParameter("VolumeName", detailRecord.VolumeName)
+                                    , CreateParameter("SourceCode", detailRecord.SourceCode)
+                                    , CreateParameter("ProductSKUCode", detailRecord.ProductSKUCode)
+                                    , CreateParameter("ProductDescription", detailRecord.ProductDescription)
+                                    , CreateParameter("Quantity", detailRecord.Quantity)
+                                    , CreateParameter("UnitPrice", detailRecord.UnitPrice)
+                                    , CreateParameter("ExtendedPrice", detailRecord.ExtendedPrice)
+                                    , CreateParameter("CouponCodes", detailRecord.CouponCodes)
+                                    , CreateParameter("I_StatusCode", detailRecord.I_StatusCode)
+                                    , CreateParameter("I_ShipDate", detailRecord.I_ShipDate)
+                                    , CreateParameter("I_Tracking", detailRecord.I_Tracking)
+                                    , CreateParameter("I_ShippingMethod", detailRecord.I_ShippingMethod)
+                                    , CreateParameter("I_SyncWithShop", detailRecord.I_SyncWithShop)
+                                    , CreateParameter("I_OriginalCost", detailRecord.I_OriginalCost)
+                                    , CreateParameter("I_OriginalQTY", detailRecord.I_OriginalQTY)
+                                    , CreateParameter("Commision", detailRecord.Commision)
                                 );
                     cmd.ExecuteNonQuery();
                 }

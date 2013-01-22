@@ -22,17 +22,17 @@ namespace EbayOrdersDownloaderConsole.DAL
         internal static void Add(OrderStatus orderStatus)
         {
             var command = BuildCommand("[dbo].[PrOrderStatus_Add]"
-                    , CreateParameter("OrderID", orderStatus.OrderID, false)
-                    , CreateParameter("Status", orderStatus.Status, false)
-                    , CreateParameter("Notes", orderStatus.Notes, false)
-                    , CreateParameter("Tracking", orderStatus.Tracking, false)
-                    , CreateParameter("ShipMethod", orderStatus.ShipMethod, false)
-                    , CreateParameter("ShipDate", orderStatus.ShipDate, false)
-                    , CreateParameter("Synced", orderStatus.Synced, false)
-                    , CreateParameter("ProcessedBy", orderStatus.ProcessedBy, false)
-                    , CreateParameter("PONum", orderStatus.PONum, false)
-                    , CreateParameter("Vendor", orderStatus.Vendor, false)
-                    , CreateParameter("InvoiceNum", orderStatus.InvoiceNum, false)
+                    , CreateParameter("OrderID", orderStatus.OrderID)
+                    , CreateParameter("Status", orderStatus.Status)
+                    , CreateParameter("Notes", orderStatus.Notes)
+                    , CreateParameter("Tracking", orderStatus.Tracking)
+                    , CreateParameter("ShipMethod", orderStatus.ShipMethod)
+                    , CreateParameter("ShipDate", orderStatus.ShipDate)
+                    , CreateParameter("Synced", orderStatus.Synced)
+                    , CreateParameter("ProcessedBy", orderStatus.ProcessedBy)
+                    , CreateParameter("PONum", orderStatus.PONum)
+                    , CreateParameter("Vendor", orderStatus.Vendor)
+                    , CreateParameter("InvoiceNum", orderStatus.InvoiceNum)
                     );
             ExecuteNonQuery(command);
         }
