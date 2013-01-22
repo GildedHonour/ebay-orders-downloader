@@ -25,140 +25,135 @@ namespace EbayOrdersDownloaderConsole
 
         static void Main(string[] args)
         {
-            //_apiContext = GetApiContext();
-            //_timer = new Timer(_ => OnTimer(), null, _dueTime, Timeout.Infinite);
+            _apiContext = GetApiContext();
+            _timer = new Timer(_ => OnTimer(), null, _dueTime, Timeout.Infinite);
             Console.ReadLine();
         }
 
         private static void OnTimer()
         {
-            using (var context = new OrderManagerEntities())
+            GetOrdersCall getOrdersApiCall = new GetOrdersCall(_apiContext);
+            OrderTypeCollection orders = getOrdersApiCall.GetOrders(
+                    new TimeFilter { TimeFrom = DateTime.Now.AddDays(-111), TimeTo = DateTime.Now },
+                    TradingRoleCodeType.Seller,
+                    OrderStatusCodeType.Completed
+                );
+            foreach (OrderType order in orders)
             {
-                GetOrdersCall getOrdersApiCall = new GetOrdersCall(_apiContext);
-                OrderTypeCollection orders = getOrdersApiCall.GetOrders(
-                        new TimeFilter { TimeFrom = DateTime.Now.AddDays(-111), TimeTo = DateTime.Now },
-                        TradingRoleCodeType.Seller,
-                        OrderStatusCodeType.Completed
-                    );
-                foreach (OrderType order in orders)
+                //if not exist in db then save the order to db
+                if (!DAL.HeaderRecords.Exists(order.OrderID))
                 {
-                    //if not exist in db then save the order to db
-                    if (!DAL.HeaderRecords.Exists(order.OrderID))
+                    #region Header record
+                    var headerRecord = new DAL.HeaderRecords
                     {
-                        //string orderID = order.OrderID.Substring(0, order.OrderID.IndexOf("-"));
+                        OrderID = order.OrderID,
+                        InvoiceID = order.ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
+                        OrderDate = order.ExternalTransaction[0].ExternalTransactionTime.ToShortDateString(), //? + todo!
+                        Email = order.TransactionArray[0].Buyer.Email, //? invalid request
+                        ShopperID = null,
+                        BilltoFirstName = order.ShippingAddress.Name,
+                        BilltoLastName = order.ShippingAddress.Name,
+                        BilltoCompanyName = order.BuyerUserID,
+                        BilltoStreetAddress = null,
+                        BilltoOptionalAddress = null,
+                        BilltoCity = null,
+                        BilltoState = null,
+                        BilltoZip = null,
+                        BilltoCountry = null,
+                        BilltoRegion = null,
+                        BilltoPhone = null,
+                        DeliveryMethod = order.ShippingServiceSelected.ShippingService == "ShippingMethodStandard" ? "1" : "5",
+                        ProductSubtotal = "", //?
+                        ShippingAndHandling = order.ShippingServiceSelected.ShippingServiceCost.Value.ToString(),
+                        TaxMultiplier = null, //?
+                        Tax = order.ShippingDetails.SalesTax.SalesTaxAmount.Value.ToString(),
+                        Discount = "0",
+                        OverallTotal = order.Total.Value.ToString(), //?
+                        CreditCardType = "",
+                        CreditCardNumber = "",
+                        CreditCardExpiration = "",
+                        CreditCardSecurityNumberCCV = "",
+                        NameOnCreditCard = "",
+                        ShiptoFirstName = order.ShippingAddress.Name,
+                        ShiptoLastName = order.ShippingAddress.Name,
+                        ShiptoCompanyName = order.BuyerUserID,
+                        ShiptoStreetAddress = order.ShippingAddress.Street1,
+                        ShiptoOptionalAddress = order.ShippingAddress.Street2,
+                        ShiptoCity = order.ShippingAddress.CityName,
+                        ShiptoState = order.ShippingAddress.StateOrProvince,
+                        ShiptoZip = order.ShippingAddress.PostalCode,
+                        ShiptoCountry = order.ShippingAddress.CountryName,
+                        ShiptoRegion = "", //?
+                        ShiptoPhone = order.ShippingAddress.Phone,
+                        SHOPCOMCatalogID = null,
+                        CatalogName = "EBAY",
+                        MultiplePaymentsQuantity = "", //?
+                        CanSellNamePrivacyFlag = "", //?
+                        CanSendOffersPrivacyFlag = "", //?
+                        ShopperComments = "", //?
+                        Source = "EBAY",
+                        GiftMessage = "", //?
+                        Commision = order.ExternalTransaction[0].FeeOrCreditAmount.Value.ToString() //each of the Item FinalValueFee
+                    };
+                    #endregion
 
-                        #region Header record
-                        var headerRecord = new DAL.HeaderRecords
-                        {
-                            OrderID = order.OrderID,
-                            InvoiceID = order.ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
-                            OrderDate = order.ExternalTransaction[0].ExternalTransactionTime.ToShortDateString(), //? + todo!
-                            Email = order.TransactionArray[0].Buyer.Email, //? invalid request
-                            ShopperID = null,
-                            BilltoFirstName = order.ShippingAddress.Name,
-                            BilltoLastName = order.ShippingAddress.Name,
-                            BilltoCompanyName = order.BuyerUserID,
-                            BilltoStreetAddress = null,
-                            BilltoOptionalAddress = null,
-                            BilltoCity = null,
-                            BilltoState = null,
-                            BilltoZip = null,
-                            BilltoCountry = null,
-                            BilltoRegion = null,
-                            BilltoPhone = null,
-                            DeliveryMethod = order.ShippingServiceSelected.ShippingService == "ShippingMethodStandard" ? "1" : "5",
-                            ProductSubtotal = "", //?
-                            ShippingAndHandling = order.ShippingServiceSelected.ShippingServiceCost.Value.ToString(),
-                            TaxMultiplier = null, //?
-                            Tax = order.ShippingDetails.SalesTax.SalesTaxAmount.Value.ToString(),
-                            Discount = "0",
-                            OverallTotal = order.Total.Value.ToString(), //?
-                            CreditCardType = "",
-                            CreditCardNumber = "",
-                            CreditCardExpiration = "",
-                            CreditCardSecurityNumberCCV = "",
-                            NameOnCreditCard = "",
-                            ShiptoFirstName = order.ShippingAddress.Name,
-                            ShiptoLastName = order.ShippingAddress.Name,
-                            ShiptoCompanyName = order.BuyerUserID,
-                            ShiptoStreetAddress = order.ShippingAddress.Street1,
-                            ShiptoOptionalAddress = order.ShippingAddress.Street2,
-                            ShiptoCity = order.ShippingAddress.CityName,
-                            ShiptoState = order.ShippingAddress.StateOrProvince,
-                            ShiptoZip = order.ShippingAddress.PostalCode,
-                            ShiptoCountry = order.ShippingAddress.CountryName,
-                            ShiptoRegion = "", //?
-                            ShiptoPhone = order.ShippingAddress.Phone,
-                            SHOPCOMCatalogID = null,
-                            CatalogName = "EBAY",
-                            MultiplePaymentsQuantity = "", //?
-                            CanSellNamePrivacyFlag = "", //?
-                            CanSendOffersPrivacyFlag = "", //?
-                            ShopperComments = "", //?
-                            Source = "EBAY",
-                            GiftMessage = "", //?
-                            Commision = order.ExternalTransaction[0].FeeOrCreditAmount.Value.ToString() //each of the Item FinalValueFee
-                        };
-                        #endregion
-
-                        List<DAL.DetailRecord> detailRecordList = new List<DAL.DetailRecord>();
-                        foreach (TransactionType transactionItem in order.TransactionArray)
-                        {
-                            var dr = new DAL.DetailRecord
-                            {
-                                InvoiceID = order.OrderID,
-                                PurchaseID = transactionItem.ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
-                                VolumeID = null,
-                                VolumeName = null,
-                                SourceCode = transactionItem.Item.Site.ToString(),
-                                //ProductSKUCode = cmd.ExecuteScalar().ToString(),
-                                ProductDescription = transactionItem.Item.Title,
-                                Quantity = transactionItem.QuantityPurchased,
-                                UnitPrice = transactionItem.TransactionPrice.Value,
-                                ExtendedPrice = transactionItem.TransactionPrice.Value * transactionItem.QuantityPurchased,
-                                CouponCodes = "",//?
-                                I_StatusCode = 0,//?
-                                I_ShipDate = null,//?
-                                I_Tracking = "",//?
-                                I_ShippingMethod = null,//?
-                                I_SyncWithShop = null,//?
-                                I_OriginalCost = null,//?
-                                I_OriginalQTY = null,//?
-                                Commision = null//?
-                            };
-
-                            detailRecordList.Add(dr);
-                        }
-
-                        DAL.HeaderRecords.Add(headerRecord);
-                        List<string> skuList = DAL.ListingsHelper.GetMPN(detailRecordList.Select(x => x.PurchaseID));
-                        for (int i = 0; i < detailRecordList.Count; i++)
-                        {
-                            detailRecordList[i].ProductSKUCode = skuList[i];
-                            DAL.DetailRecord.Add(detailRecordList);
-                        }
-
-                        var orderStatus = new DAL.OrderStatus
-                        {
-                            OrderID = order.OrderID,
-                            Status = 1
-                        };
-                        DAL.OrderStatus.Add(orderStatus);
-
-                        var orderMessage = new DAL.OrderMessage
+                    List<DAL.DetailRecord> detailRecordList = new List<DAL.DetailRecord>();
+                    foreach (TransactionType transactionItem in order.TransactionArray)
+                    {
+                        var dr = new DAL.DetailRecord
                         {
                             InvoiceID = order.OrderID,
-                            To = "",//?
-                            From = "",//?
-                            Message = "",//?
-                            DeliveryDate = ""//?
+                            PurchaseID = transactionItem.ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
+                            VolumeID = null,
+                            VolumeName = null,
+                            SourceCode = transactionItem.Item.Site.ToString(),
+                            ItemID = transactionItem.Item.ItemID,
+                            ProductDescription = transactionItem.Item.Title,
+                            Quantity = transactionItem.QuantityPurchased,
+                            UnitPrice = transactionItem.TransactionPrice.Value,
+                            ExtendedPrice = transactionItem.TransactionPrice.Value * transactionItem.QuantityPurchased,
+                            CouponCodes = "",//?
+                            I_StatusCode = 0,//?
+                            I_ShipDate = null,//?
+                            I_Tracking = "",//?
+                            I_ShippingMethod = null,//?
+                            I_SyncWithShop = null,//?
+                            I_OriginalCost = null,//?
+                            I_OriginalQTY = null,//?
+                            Commision = null//?
                         };
-                        DAL.OrderMessage.Add(orderMessage);
-                    }
-                }
 
-                RestartTimer();
+                        detailRecordList.Add(dr);
+                    }
+
+                    DAL.HeaderRecords.Add(headerRecord);
+                    List<string> skuList = DAL.ListingsHelper.GetMPN(detailRecordList.Select(x => x.ItemID));
+                    for (int i = 0; i < detailRecordList.Count; i++)
+                    {
+                        detailRecordList[i].ProductSKUCode = skuList[i];
+                        DAL.DetailRecord.Add(detailRecordList);
+                    }
+
+                    var orderStatus = new DAL.OrderStatus
+                    {
+                        OrderID = order.OrderID,
+                        Status = 1
+                    };
+                    DAL.OrderStatus.Add(orderStatus);
+
+                    var orderMessage = new DAL.OrderMessage
+                    {
+                        InvoiceID = order.OrderID,
+                        To = "",//?
+                        From = "",//?
+                        Message = "",//?
+                        DeliveryDate = ""//?
+                    };
+                    DAL.OrderMessage.Add(orderMessage);
+                }
             }
+
+            RestartTimer();
         }
 
         private static ApiContext GetApiContext()

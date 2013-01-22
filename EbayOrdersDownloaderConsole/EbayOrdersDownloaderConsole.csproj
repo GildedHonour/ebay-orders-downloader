@@ -57,11 +57,6 @@
     <Compile Include="DALProvider.cs" />
     <Compile Include="HeaderRecords.cs" />
     <Compile Include="DetailRecord.cs" />
-    <Compile Include="Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
     <Compile Include="OrderMessage.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="Program.cs" />
@@ -72,10 +67,6 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <Content Include="migration1.sql" />

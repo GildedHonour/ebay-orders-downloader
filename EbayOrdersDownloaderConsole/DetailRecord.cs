@@ -27,6 +27,7 @@ namespace EbayOrdersDownloaderConsole.DAL
         public float? I_OriginalCost;
         public decimal? I_OriginalQTY;
         public decimal? Commision;
+        public string ItemID;
 
         public static void Add(IEnumerable<DetailRecord> detailRecordList)
         {
