@@ -13,6 +13,7 @@ using eBay.Service.Core.Soap;
 using System.Transactions;
 using eBay.Service.Call;
 using eBay.Service.Util;
+using System.Data.SqlClient;
 
 namespace EbayOrdersDownloaderConsole
 {
@@ -42,26 +43,18 @@ namespace EbayOrdersDownloaderConsole
                 foreach (OrderType order in orders)
                 {
                     //if not exist in db then save the order to db
-                    if (context.HeaderRecords.SingleOrDefault(x => x.OrderID == order.OrderID) == null)
+                    if (!DAL.HeaderRecords.Exists(order.OrderID))
                     {
-                        var fetchedItem = new ItemType();
-                        fetchedItem.CategoryMappingAllowed = true;
-                        fetchedItem.ProductListingDetails = new ProductListingDetailsType();
-                        fetchedItem.ProductListingDetails.IncludePrefilledItemInformation = true;
-                        string orderID = order.OrderID.Substring(0, order.OrderID.IndexOf("-"));
-                        GetItemCall getItemApiCall = new GetItemCall(_apiContext);
-                        getItemApiCall.IncludeItemCompatibilityList = true;
-                        getItemApiCall.IncludeItemSpecifics = true;
-                        fetchedItem = getItemApiCall.GetItem(orderID);
-                        
+                        //string orderID = order.OrderID.Substring(0, order.OrderID.IndexOf("-"));
+
                         #region Header record
-                        var headerRecord = new HeaderRecords
+                        var headerRecord = new DAL.HeaderRecords
                         {
                             OrderID = order.OrderID,
                             InvoiceID = order.ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
                             OrderDate = order.ExternalTransaction[0].ExternalTransactionTime.ToShortDateString(), //? + todo!
                             Email = order.TransactionArray[0].Buyer.Email, //? invalid request
-                            ShopperID = null, 
+                            ShopperID = null,
                             BilltoFirstName = order.ShippingAddress.Name,
                             BilltoLastName = order.ShippingAddress.Name,
                             BilltoCompanyName = order.BuyerUserID,
@@ -71,7 +64,7 @@ namespace EbayOrdersDownloaderConsole
                             BilltoState = null,
                             BilltoZip = null,
                             BilltoCountry = null,
-                            BilltoRegion = null,  
+                            BilltoRegion = null,
                             BilltoPhone = null,
                             DeliveryMethod = order.ShippingServiceSelected.ShippingService == "ShippingMethodStandard" ? "1" : "5",
                             ProductSubtotal = "", //?
@@ -106,40 +99,53 @@ namespace EbayOrdersDownloaderConsole
                             GiftMessage = "", //?
                             Commision = order.ExternalTransaction[0].FeeOrCreditAmount.Value.ToString() //each of the Item FinalValueFee
                         };
-                        context.HeaderRecords.AddObject(headerRecord);
                         #endregion
 
-                        var detailRecord = new DetailRecord
+                        //if there is more than item in the order
+                        List<DAL.DetailRecord> detailRecordList = new List<DAL.DetailRecord>();
+                        using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings[""].ConnectionString))
                         {
-                            InvoiceID = order.OrderID,
-                            PurchaseID = order.TransactionArray[0].ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
-                            VolumeID = null,
-                            VolumeName = null,
-                            SourceCode = order.TransactionArray[0].Item.Site.ToString(),
-                            ProductSKUCode = fetchedItem.SKU, 
-                            ProductDescription = order.TransactionArray[0].Item.Title,
-                            Quantity = order.TransactionArray[0].QuantityPurchased,
-                            UnitPrice = order.TransactionArray[0].TransactionPrice.Value,
-                            ExtendedPrice = order.TransactionArray[0].TransactionPrice.Value * order.TransactionArray[0].QuantityPurchased,
-                            CouponCodes = "",//?
-                            I_StatusCode = null,//?
-                            I_ShipDate = null,//?
-                            I_Tracking = "",//?
-                            I_ShippingMethod = null,//?
-                            I_SyncWithShop = null,//?
-                            I_OriginalCost = null,//?
-                            I_OriginalQTY = null,//?
-                            Commision = null//?
-                        };
-                        context.DetailRecord.AddObject(detailRecord);
+                            SqlCommand cmd = new SqlCommand("", connection);
+                            connection.Open();
+                            foreach (TransactionType transactionItem in order.TransactionArray)
+                            {
+                                var detailRecord = new DAL.DetailRecord
+                                {
+                                    InvoiceID = order.OrderID,
+                                    PurchaseID = transactionItem.ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
+                                    VolumeID = null,
+                                    VolumeName = null,
+                                    SourceCode = transactionItem.Item.Site.ToString(),
+                                    ProductSKUCode = cmd.ExecuteScalar().ToString(),
+                                    ProductDescription = transactionItem.Item.Title,
+                                    Quantity = transactionItem.QuantityPurchased,
+                                    UnitPrice = transactionItem.TransactionPrice.Value,
+                                    ExtendedPrice = transactionItem.TransactionPrice.Value * transactionItem.QuantityPurchased,
+                                    CouponCodes = "",//?
+                                    I_StatusCode = 0,//?
+                                    I_ShipDate = null,//?
+                                    I_Tracking = "",//?
+                                    I_ShippingMethod = null,//?
+                                    I_SyncWithShop = null,//?
+                                    I_OriginalCost = null,//?
+                                    I_OriginalQTY = null,//?
+                                    Commision = null//?
+                                };
+                                detailRecordList.Add(detailRecord);
+                            }
+                        }
 
-                        var orderStatus = new OrderStatus
+                        DAL.HeaderRecords.Add(headerRecord);
+                        DAL.DetailRecord.Add(detailRecordList);
+
+                        var orderStatus = new DAL.OrderStatus
                         {
                             OrderID = order.OrderID,
                             Status = 1
                         };
-
-                        var orderMessage = new OrderMessage
+                        DAL.OrderStatus.Add(orderStatus);
+                        
+                        var orderMessage = new DAL.OrderMessage
                         {
                             InvoiceID = order.OrderID,
                             To = "",//?
@@ -147,17 +153,7 @@ namespace EbayOrdersDownloaderConsole
                             Message = "",//?
                             DeliveryDate = ""//?
                         };
-                        context.OrderMessage.AddObject(orderMessage);
-
-                        //does it have to be used and changed?
-                        //var status = new Status
-                        //{
-
-                        //};
-
-                        context.OrderStatus.AddObject(orderStatus);
-                        context.SaveChanges();
-                        context.AcceptAllChanges();
+                        DAL.OrderMessage.Add(orderMessage);
                     }
                 }
 
