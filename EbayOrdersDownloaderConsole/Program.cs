@@ -20,7 +20,7 @@ namespace EbayOrdersDownloaderConsole
     class Program
     {
         private static ApiContext _apiContext = GetApiContext();
-        private static Timer _timer = new Timer(_ => OnTimer(), null, _dueTime, Timeout.Infinite);
+        private static Timer _timer;
         private static readonly int _dueTime = int.Parse(ConfigurationManager.AppSettings["dueTime"]) * 10;
 
         static void Main(string[] args)
@@ -40,16 +40,16 @@ namespace EbayOrdersDownloaderConsole
                 );
             foreach (OrderType order in orders)
             {
-                //if not exist in db then save the order to db
-                if (!DAL.HeaderRecords.Exists(order.OrderID))
+                //if it doesn not exist in db then save it to db
+                if (!DAL.HeaderRecords.Exists(order.OrderID)) 
                 {
                     #region Header record
                     var headerRecord = new DAL.HeaderRecords
                     {
                         OrderID = order.OrderID,
                         InvoiceID = order.ShippingDetails.SellingManagerSalesRecordNumber.ToString(),
-                        OrderDate = order.ExternalTransaction[0].ExternalTransactionTime.ToShortDateString(), //? + todo!
-                        Email = order.TransactionArray[0].Buyer.Email, //? invalid request
+                        //OrderDate = order.ExternalTransaction[0].ExternalTransactionTime.ToShortDateString(), // it gives null
+                        Email = order.TransactionArray[0].Buyer.Email, //? it gives the value of "invalid request"
                         ShopperID = null,
                         BilltoFirstName = order.ShippingAddress.Name,
                         BilltoLastName = order.ShippingAddress.Name,
@@ -93,7 +93,7 @@ namespace EbayOrdersDownloaderConsole
                         ShopperComments = "", //?
                         Source = "EBAY",
                         GiftMessage = "", //?
-                        Commision = order.ExternalTransaction[0].FeeOrCreditAmount.Value.ToString() //each of the Item FinalValueFee
+                        //Commision = order.ExternalTransaction[0].FeeOrCreditAmount.Value.ToString() // it gives null
                     };
                     #endregion
 

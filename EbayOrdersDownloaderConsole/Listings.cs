@@ -21,8 +21,10 @@ namespace EbayOrdersDownloaderConsole.DAL
                 foreach (var listingID in listingIDList)
                 {
                     cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@ListingID",   listingID);
-                    mpnList.Add(cmd.ExecuteScalar().ToString());
+                    cmd.Parameters.AddWithValue("@ListingID", listingID);
+                    object mpnRaw = cmd.ExecuteScalar();
+                    string mpn = mpnRaw == null ? null : mpnRaw.ToString();
+                    mpnList.Add(mpn);
                 }
             }
 

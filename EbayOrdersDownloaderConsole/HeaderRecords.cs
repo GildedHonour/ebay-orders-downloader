@@ -124,7 +124,7 @@ namespace EbayOrdersDownloaderConsole.DAL
 
         public static bool Exists(string orderID)
         {
-            var command = BuildCommand("[dbo].[PrHeaderRecords_Add]", CreateParameter("OrderID", orderID));
+            var command = BuildCommand("[dbo].[PrHeaderRecords_Exists]", CreateParameter("OrderID", orderID));
             return ((int)ExecuteScalar(command)) == 1;
         }
     }
