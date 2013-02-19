@@ -58,6 +58,7 @@ namespace EbayOrdersDownloaderConsole.DAL
         public string PayPalTxnID;
         public string GiftMessage;
         public string Commision;
+        public List<DetailRecord> Items = new List<DetailRecord>();
         #endregion
 
         public static void Add(HeaderRecords headerRecord)

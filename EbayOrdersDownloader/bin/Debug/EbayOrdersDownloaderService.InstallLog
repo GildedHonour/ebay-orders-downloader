@@ -1,0 +1,226 @@
+﻿Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe assembly.
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+No public installers with the RunInstallerAttribute.Yes attribute could be found in the c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe assembly.
+Remove InstallState file because there are no installers.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Service EBayOrdersDownloaderService is being removed from the system...
+Service EBayOrdersDownloaderService was successfully removed from the system.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Service EBayOrdersDownloaderService is being removed from the system...
+Service EBayOrdersDownloaderService was successfully removed from the system.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Service EBayOrdersDownloaderService is being removed from the system...
+Service EBayOrdersDownloaderService was successfully removed from the system.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Service EBayOrdersDownloaderService is being removed from the system...
+Service EBayOrdersDownloaderService was successfully removed from the system.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EBayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EBayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EBayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Service EBayOrdersDownloaderService is being removed from the system...
+Service EBayOrdersDownloaderService was successfully removed from the system.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Service EBayOrdersDownloaderService is being removed from the system...
+Service EBayOrdersDownloaderService was successfully removed from the system.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EBayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EBayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EBayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Service EBayOrdersDownloaderService is being removed from the system...
+Service EBayOrdersDownloaderService was successfully removed from the system.
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Warning: The source EBayOrdersDownloaderService is not registered on the local machine.
+Service EBayOrdersDownloaderService is being removed from the system...
+An exception occurred during the uninstallation of the System.ServiceProcess.ServiceInstaller installer.
+System.ComponentModel.Win32Exception: The specified service does not exist as an installed service
+An exception occurred while uninstalling. This exception will be ignored and the uninstall will continue. However, the application might not be fully uninstalled after the uninstall is complete.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Service EBayOrdersDownloaderService is being removed from the system...
+Service EBayOrdersDownloaderService was successfully removed from the system.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Uninstalling assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EBayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EBayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EBayOrdersDownloaderService.exe
+Removing EventLog source EBayOrdersDownloaderService.
+Service EBayOrdersDownloaderService is being removed from the system...
+Service EBayOrdersDownloaderService was successfully removed from the system.
+Installing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
+Installing service EBayOrdersDownloaderService...
+Service EBayOrdersDownloaderService has been successfully installed.
+Creating EventLog source EBayOrdersDownloaderService in log Application...
+Committing assembly 'c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.InstallLog
+   assemblypath = c:\Users\Alex\Documents\Visual Studio 2010\Projects\EbayOrdersDownloader\EbayOrdersDownloader\bin\Debug\EbayOrdersDownloaderService.exe
